@@ -1,6 +1,12 @@
 .widget
   .widget-title
     i.fa.fa-external-link= ' ' + __('blogroll')
-  - for (var i in theme.links)
+  - var links = config.links || theme.links
+  if links
     ul
-    a(href=theme.links[i].url, title=theme.links[i].title, target='_blank') #{theme.links[i].title}
+      - for (var i in links)
+        li.link-item
+          a.link-title(href=links[i].url, title=links[i].desc || links[i].title, target='_blank')
+            if links[i].src
+              img.link-src.no-fancybox(src=links[i].src, alt=links[i].title)
+            span.link-name #{links[i].title}

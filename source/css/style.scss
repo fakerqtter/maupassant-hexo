@@ -22,12 +22,12 @@ textarea,
 .MJXc-TeX-unknown-R,
 .pure-g [class *="pure-u"] {
     /* Set your content font stack here: */
-    font-family: "PingFangSC-Regular", Helvetica, "Helvetica Neue", "Segoe UI", "Hiragino Sans GB", "Source Han Sans CN", "Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei", sans-serif !important;
+    font-family: "source-han-serif-sc", serif, "PingFangSC-Regular", Helvetica, "Helvetica Neue", "Segoe UI", "Hiragino Sans GB", "Source Han Sans CN", "Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei", sans-serif !important;
 }
 
 body {
     background-color: #FFF;
-    color: #444;
+    color: #222;
     font-family: "TIBch", "Classic Grotesque W01", "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -47,7 +47,7 @@ body {
 
 a,
 button.submit {
-    color: #6E7173;
+    color: #333;
     text-decoration: none;
     -webkit-transition: all .1s ease-in;
     -moz-transition: all .1s ease-in;
@@ -57,7 +57,9 @@ button.submit {
 
 a:hover,
 a:active {
-    color: #444;
+    border-bottom: 1px solid red;  /* 底部红色线 */
+    color: #000;                   /* 字体颜色可保留或自定义 */
+    text-decoration: none;         /* 可选：防止浏览器默认下划线 */
 }
 
 a:focus {
@@ -99,7 +101,8 @@ div {
         }
 
         .description {
-            margin: .2em 0 0;
+            margin: .2em 5 5;
+            
             color: #999;
         }
     }
@@ -142,7 +145,7 @@ div {
         margin-bottom: 30px;
 
         .widget-title {
-            color: #6E7173;
+            color: #333;
             line-height: 2.7;
             margin-top: 0;
             font-size: 16px;
@@ -152,7 +155,7 @@ div {
         }
 
         .comments-title {
-            color: #6E7173;
+            color: #333;
             line-height: 2.7;
             margin-top: 0;
             font-size: 16px;
@@ -165,17 +168,32 @@ div {
             margin-top: 10px;
 
             a {
-                line-height: 1.5;
-                padding: 5px;
+                display: inline-block;
+                padding: 4px 8px;
+                font-size: 14px;
+                color: #222;
+                text-decoration: none;
+                margin: 2px 2px; /* 💡 加上这一行：上下左右都有外边距 */
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                background-color: transparent;
+
+                transition: all 0.2s ease;
+            }
+
+            a:hover {
+                background-color: #f0f0f0;  /* 淡灰色 hover 背景 */
+                border-color: #ccc;
+                color: #000;
             }
         }
 
         ul {
-            list-style: none;
+            list-style: circle;
             padding: 0;
 
             li {
-                margin: 5px 0;
+                margin: 5px 0 0 15px;
                 line-height: 1.5;
 
                 .wl-emoji {
@@ -186,7 +204,7 @@ div {
 
         .category-list-count {
             padding-left: 5px;
-            color: #6E7173;
+            color: #333;
         }
 
         .category-list-count::before {
@@ -268,9 +286,9 @@ div {
 
     .post-title {
         margin: 0;
-        color: #555;
+        color: #222;
         text-align: left;
-        font: bold 25px/1.1 "ff-tisa-web-pro", Cambria, "Times New Roman", Georgia, Times, sans-serif;
+        font: "PingFangSC-Regular", Helvetica, "Helvetica Neue", "Segoe UI", "Hiragino Sans GB", "Source Han Sans CN", "Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei", sans-serif !important
 
         a {
             color: #555;
@@ -294,7 +312,7 @@ div {
     .post-meta {
         padding: 0;
         margin: 15px 0 0;
-        color: #6E7173;
+        color: #333;
         float: left;
         display: inline;
         text-indent: .15em;
@@ -325,7 +343,7 @@ div {
     .ds-thread-count {
         padding: 0;
         margin: 15px 0 0;
-        color: #6E7173;
+        color: #333;
         float: right;
         display: inline;
         text-indent: .15em;
@@ -344,7 +362,7 @@ div {
     .disqus-comment-count {
         padding: 0;
         margin: 15px 0 0;
-        color: #6E7173;
+        color: #333;
         float: right;
         display: inline;
         text-indent: .15em;
@@ -362,9 +380,9 @@ div {
 
     .post-content {
         clear: left;
-        font-size: 15px;
+        font-size: 16px;
         line-height: 1.77;
-        color: #444;
+        color: #222;
         padding-top: 15px;
         text-align: justify;
         text-justify: distribute;
@@ -409,7 +427,7 @@ div {
         }
 
         .caption {
-            color: #444;
+            color: #222;
             display: block;
             font-size: 0.9em;
             margin-top: 0.1em;
@@ -463,17 +481,23 @@ div {
             margin: 0 0 30px 0;
 
             a {
-                padding: 0px 5px;
-                margin: 3px;
                 display: inline-block;
-                border: 1px solid #808080;
-                border-radius: 999em;
-                color: #aaa;
+                padding: 4px 8px;
+                font-size: 14px;
+                color: #222;
+                text-decoration: none;
+                margin: 2px 2px; /* 💡 加上这一行：上下左右都有外边距 */
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                background-color: transparent;
+
+                transition: all 0.2s ease;
 
                 &:hover {
-                    color: #fff;
-                    border: 1px solid #808080;
-                    background: #808080;
+                    
+                    background-color: #f0f0f0;  /* 淡灰色 hover 背景 */
+                    border-color: #ccc;
+                    color: #000;
                 }
             }
         }
@@ -565,7 +589,7 @@ div {
     padding: .8em 0 3.6em;
     margin-top: 1em;
     line-height: 2.5;
-    color: #6E7173;
+    color: #333;
     text-align: center;
 
     span {
@@ -577,7 +601,7 @@ div {
 /* for archive page starts*/
 
 .post-archive {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 2;
     padding-bottom: .8em;
 
@@ -906,7 +930,7 @@ screen and (min-width: 48em) {
 }
 
 #process .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time>span:first-child {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
 }
 
@@ -929,7 +953,7 @@ screen and (min-width: 48em) {
     text-align: center;
     border: 4px solid #F5F5F6;
     line-height: 40px;
-    font-size: 15px;
+    font-size: 16px;
     float: left;
     position: absolute;
     top: 50%;
@@ -985,7 +1009,7 @@ screen and (min-width: 48em) {
     font-size: 14px;
     font-family: 'Georgia', serif, Helvetica, "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
     font-style: italic;
-    color: #333;
+    color: #222;
     padding: 10px;
     background-color: #eee;
     -webkit-border-radius: 3px;
@@ -1110,7 +1134,7 @@ figure.highlight,
     background: #f7f8f8;
     margin: 10px 0;
     line-height: 1.1em;
-    color: #333;
+    color: #222;
     padding-top: 15px;
     overflow: hidden;
 
@@ -1249,7 +1273,7 @@ figure.highlight,
         }
 
         .variable {
-            color: #333;
+            color: #222;
         }
 
         .title {
@@ -1322,7 +1346,7 @@ figure.highlight,
 
         .preprocessor,
         .preprocessor .keyword {
-            color: #333;
+            color: #222;
         }
 
         .title {
@@ -1358,7 +1382,7 @@ figure.highlight,
 
         .attr_selector,
         .value {
-            color: #333;
+            color: #222;
         }
 
         .id,
@@ -1426,7 +1450,7 @@ figure.highlight,
 
         .value,
         .keyword {
-            color: #333;
+            color: #222;
         }
     }
 
@@ -1473,7 +1497,7 @@ figure.highlight,
         }
 
         .tag .title {
-            color: #333;
+            color: #222;
         }
 
         .regexp {
@@ -1501,7 +1525,7 @@ figure.highlight,
     // Makefile
     &.mak .code {
         .constant {
-            color: #333;
+            color: #222;
         }
 
         .title {
@@ -1557,7 +1581,7 @@ figure.highlight,
         }
 
         .variable {
-            color: #333;
+            color: #222;
         }
     }
 
@@ -1671,7 +1695,7 @@ figure.highlight,
     &.xml,
     &.html {
         .tag {
-            color: #333;
+            color: #222;
         }
 
         .value {
@@ -1765,7 +1789,7 @@ figure.highlight,
         }
 
         .variable {
-            color: #333;
+            color: #222;
         }
 
         .built_in {
@@ -1881,7 +1905,7 @@ figure.highlight,
     a {
         display: inline-block;
         line-height: 25px;
-        font-size: 15px;
+        font-size: 16px;
         color: #555;
         border-bottom: none;
         float: left;
@@ -2135,7 +2159,7 @@ ul.search-result-list {
 
 a.search-result-title {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
     color: #555;
 }
 
@@ -2345,7 +2369,13 @@ html[data-dark='true'] {
 
 
 /* Links Layout*/
-
+.link-src {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-right: 4px;
+}
 .link-items {
     display: flex;
     text-align: center;
@@ -2395,7 +2425,7 @@ html[data-dark='true'] {
                     font-weight: 700;
                     margin: 0.42rem 0px;
                 }
-
+    
                 .link-desc {
                     font-size: 0.8rem;
                     font-weight: normal;

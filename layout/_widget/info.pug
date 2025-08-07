@@ -1,8 +1,10 @@
 .widget
   .author-info
+
+    - var infoConf = config.info || theme.info
     a.info-avatar(href='/about/', title= __('about'))
-      img.nofancybox(src=theme.info.avatar)
-    p #{theme.info.discription}
-    - for (var i in theme.info.outlinkitem)
-      a.info-icon(href=theme.info.outlinkitem[i].outlink, title=theme.info.outlinkitem[i].message, target='_blank', style='margin-inline:5px')  
-        i.fa(class='fa-' + theme.info.outlinkitem[i].name + '-square', style='margin-inline:5px')
+      img.nofancybox(src=infoConf.avatar)
+    p #{infoConf.discription}
+    - for (var i in infoConf.outlinkitem)
+      a.info-icon(href=infoConf.outlinkitem[i].outlink, title=infoConf.outlinkitem[i].message, target='_blank', style='margin-inline:5px')  
+        i.fa(class='fa-' + infoConf.outlinkitem[i].name + '-square', style='margin-inline:5px')

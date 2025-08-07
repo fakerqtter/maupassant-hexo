@@ -2,18 +2,19 @@ extends base
 block title
   title= page.title + ' | ' + config.title
 block content
+  - var links = config.links || theme.links
   .post
     h1.post-title= page.title
     .post-content
       ul.link-items
-        - for (var i in theme.links)
+        - for (var i in links)
           li.link-item
-            a.link-url(target='_blank', href=theme.links[i].url)
+            a.link-url(target='_blank', href=links[i].url)
               .link-left
-                img.link-avatar(src=theme.links[i].src, title=theme.links[i].title)
+                img.link-avatar(src=links[i].src, title=links[i].title)
               .link-info
-                .link-blog #{theme.links[i].title}
-                .link-desc #{theme.links[i].desc}
+                .link-blog #{links[i].title}
+                .link-desc #{links[i].desc}
 
   if page.donate
     include _widget/donate.pug

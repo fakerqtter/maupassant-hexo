@@ -15,6 +15,8 @@ if config.feed
 
 doctype html
 html(lang=config.language)
+
+  - var menuConf = config.menu || theme.menu
   include _partial/head.pug
   body: .body_container
     #header
@@ -23,19 +25,21 @@ html(lang=config.language)
         a#logo(href=url_for('.'))= config.title
         p.description= config.subtitle
       #nav-menu
-        - for (var i in theme.menu)
-          +a_with_current(theme.menu[i].directory, __(theme.menu[i].page), theme.menu[i].icon)
-
+        - for (var i in menuConf)
+          +a_with_current(menuConf[i].directory, __(menuConf[i].page), menuConf[i].icon)
+    
+    - var widgets_on_small_screens = config.widgets_on_small_screens || theme.widgets_on_small_screens
+    - var widgetsConf = config.widgets || theme.widgets
     #layout.pure-g
       .pure-u-1.pure-u-md-3-4: .content_container
         block content
-      if theme.widgets_on_small_screens
+      if widgets_on_small_screens
         .pure-u-1.pure-u-md-1-4: #sidebar
-          each item in theme.widgets
+          each item in widgetsConf
             != partial('_widget/' + item + '.pug', null, {cache: !config.relative_link})
       else
         .pure-u-1-4.hidden_mid_and_down: #sidebar
-          each item in theme.widgets
+          each item in widgetsConf
             != partial('_widget/' + item + '.pug', null, {cache: !config.relative_link})
       .pure-u-1.pure-u-md-3-4
         != partial('_partial/footer.pug')

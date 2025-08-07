@@ -23,7 +23,7 @@ block content
       a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
     if theme.changyan
       a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span#changyan_count_unit(style='font-size: 17px; color: #333;') 0
         span= ' ' + __('Comment')
       script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
     if theme.valine.enable == true

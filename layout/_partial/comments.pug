@@ -87,18 +87,19 @@ if theme.livere
         e.parentNode.insertBefore(j, e);
       })(document, 'script');
 
-if theme.gitalk.enable == true
+- var gitalkConf = config.gitalk || theme.gitalk
+if gitalkConf.enable == true
   #container
   link(rel='stylesheet', type='text/css', href='https://unpkg.com/gitalk/dist/gitalk.css')
   script(type='text/javascript', src='https://unpkg.com/blueimp-md5/js/md5.js')
   script(type='text/javascript', src='https://unpkg.com/gitalk/dist/gitalk.min.js')
   script.
     var gitalk = new Gitalk({
-      clientID: '#{theme.gitalk.client_id}',
-      clientSecret: '#{theme.gitalk.client_secret}',
-      repo: '#{theme.gitalk.repo}',
-      owner: '#{theme.gitalk.owner}',
-      admin: ['#{theme.gitalk.admin}'],
+      clientID: '#{gitalkConf.client_id}',
+      clientSecret: '#{gitalkConf.client_secret}',
+      repo: '#{gitalkConf.repo}',
+      owner: '#{gitalkConf.owner}',
+      admin: ['#{gitalkConf.admin}'],
       id: md5(location.pathname),
       distractionFreeMode: false
     })
