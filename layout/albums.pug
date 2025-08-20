@@ -1,0 +1,71 @@
+extends base-without-sidebar
+
+block content
+  .body_container
+    // 页面标题
+    h1= page.title
+
+    // “返回相册目录”按钮，如果当前是相册详情页
+    if page.parent
+      a.back-button(href=url_for(page.parent)) 返回相册目录
+    
+    if page.albums
+      - var seenTitles = new Set()
+      .album-list
+        each album in page.albums
+          - if (!seenTitles.has(album.title))
+            - seenTitles.add(album.title)
+            a.album-item(href=url_for(album.path))
+              // 给 img 加 no-fancybox
+              img.no-fancybox(src=url_for(album.cover), alt=album.title, loading="lazy")
+              .album-title= album.title
+
+
+  style.
+    .album-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .album-item {
+      display: block;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      text-decoration: none;
+      color: inherit;
+      transition: transform .2s;
+      background: #fff;
+    }
+    .album-item:hover {
+      transform: scale(1.03);
+    }
+    .album-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .album-title {
+      padding: 10px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 6px 12px;
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+    .back-button:hover {
+      background: #eaeaea;
+    }

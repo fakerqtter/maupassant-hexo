@@ -44,7 +44,7 @@ html(lang=config.language)
       .pure-u-1.pure-u-md-3-4
         != partial('_partial/footer.pug')
 
-    if theme.totop == true
+    if menuConf.totop == true
       include _partial/totop.pug
     
     include _partial/after_footer.pug

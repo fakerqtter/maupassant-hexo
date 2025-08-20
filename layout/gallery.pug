@@ -1,0 +1,97 @@
+extends base-without-sidebar
+
+block content
+  .body_container
+    // 返回目录按钮
+    a.btn-back(href="/albums/") ← 返回相册目录
+
+    // 页面标题
+    h1= page.title
+
+    if page.photos
+      #mygallery
+        each photo in page.photos
+          a(href=url_for(photo.url))
+            img(src=url_for(photo.url), alt=photo.caption, loading="lazy")
+          
+
+    // 引入 CSS
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css")
+
+    style.
+      .btn-back {
+        display: inline-block;
+        margin-bottom: 15px;
+        padding: 8px 16px;
+        background: #409eff;
+        color: #fff;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background .3s;
+      }
+      .btn-back:hover {
+        background: #66b1ff;
+      }
+
+      #mygallery {
+        min-height: 300px;
+        overflow: hidden;
+        visibility: hidden; /* 初始隐藏，防止闪烁 */
+      }
+      #mygallery a img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+        display: block;
+      }
+      #mygallery a {
+        display: block;
+        text-align: center; /* 让 caption 居中 */
+      }
+      #mygallery .caption {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin: 6px auto 0 auto;
+        max-width: 90%;
+        text-align: center;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+      }
+      /* 美化 JustifiedGallery 自带的 caption */
+      #mygallery .jg-caption {
+        font-size: 14px;                   /* 字体大小 */
+        font-weight: 500;                   /* 字体粗细 */
+        color: #fff;                        /* 白色文字 */
+        background: rgba(0, 0, 0, 0.5);    /* 半透明黑色背景 */
+        padding: 4px 8px;                   /* 内边距 */
+        border-radius: 4px;                 /* 圆角 */
+        margin-top: 6px;                    /* 上间距 */
+        text-align: center;                 /* 文字居中 */
+        text-shadow: 0 1px 2px rgba(0,0,0,0.6); /* 阴影 */
+      }
+      #mygallery.jg-loaded {
+        visibility: visible; /* 排版完成后显示 */
+      }
+
+    // 引入 JS
+    script(src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js")
+
+    // 初始化相册
+    script.
+      document.addEventListener('DOMContentLoaded', function () {
+        const gallery = document.getElementById('mygallery');
+        $('#mygallery').justifiedGallery({
+          rowHeight: 200,
+          margins: 5,
+          waitThumbnailsLoad: true,
+          lastRow: 'justify'
+        }).on('jg.complete', function () {
+          gallery.classList.add('jg-loaded');
+        });
+      });

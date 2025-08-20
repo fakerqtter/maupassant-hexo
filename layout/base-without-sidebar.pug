@@ -26,14 +26,17 @@ html(lang=config.language)
       #nav-menu
         - for (var i in menuConf)
           +a_with_current(menuConf[i].directory, __(menuConf[i].page), menuConf[i].icon)
-
+    
     #layout.pure-g
       .pure-u-1.pure-u-md-4-4: .content_container
         block content
+
+    
+        if page.comments
+          include _partial/comments.pug
       .pure-u-1.pure-u-md-4-4
         != partial('_partial/footer.pug')
-
-    if theme.totop == true
+    
+    if menuConf.totop == true
       include _partial/totop.pug
-
     include _partial/after_footer.pug
