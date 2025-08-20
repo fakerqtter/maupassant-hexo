@@ -10,6 +10,21 @@ A simple Hexo template with great performance on different devices, ported from 
 
 ![template preview](https://ooo.0o0.ooo/2015/10/24/562b5be12177e.jpg
  "Maupassant template preview")
+## DIY notes
+
+- 更新主题字体
+- 更新博客body整体宽度为1280px
+- 更新gitalk 等部分功能的配置读取优先级：优先读取博客本身的配置
+- 添加相册列表和相册功能页面
+- 优化fancybox.js：添加 .no-fancybox 过滤 class
+- 修改 footer 底部 copyright 指向 diy 的主题地址
+- 添加 gitalk issue 自动创建脚本&配置
+  ```
+  autoGenerateIssueToken: xxxxxx # 自动创建issue需要的 github api token 👈 新增配置
+  autoGenerateIssue: true  # 👈 新增配置
+  extraPages:  ## 👈 新增配置，指定哪些非文章页面也自动创建issue
+    - /about/
+  ```
 
 ## Installation
 Install theme and renderers:
